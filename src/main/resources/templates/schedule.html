@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.w3.org/1999/xhtml"
+  layout:decorate="~{layouts/base}"
+  lang="en"
+>
+  <div layout:fragment="head" th:remove="tag">
+    <!-- Page specific head additions -->
+    <title>NFL Schedule</title>
+
+  </div>
+
+  <!-- <body> -->
+  <div layout:fragment="body" th:remove="tag">
+    <!-- Page specific body additions -->
+    <div class="container">
+      <h1 style="text-align: center; font-size: 50px">
+        NFL
+        <span style="color: #ff5e5e !important; font-weight: bold">Schedule</span>
+      </h1>
+
+      <table class="games" border="1">
+        <tr>
+          <th>Stadium</th>
+          <th>Date</th>
+          <th>Home Team</th>
+          <th> ----- </th>
+          <th>Score</th>
+          <th> ----- </th>
+          <th>Away Team</th>
+          
+        </tr>
+        <tr th:each="game : ${jObj.data}">
+          <td th:text="${game.venue}"></td>
+          <td th:text="${game.date}"></td>
+          <td th:text="${game.homeTeam.name}"></td>
+          <td th:text="${game.homeTeam.score}"></td>
+          <td th:text></td>
+          <td th:text="${game.awayTeam.score}"></td>
+          <td th:text="${game.awayTeam.name}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <style>
+    .games{
+        position:absolute;
+        left:400px;
+        text-align: center;
+        padding-right:30%;
+    }
+  </style>
+}
+
+</html>
