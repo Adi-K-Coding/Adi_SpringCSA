@@ -10,10 +10,7 @@ public class Day {
     private int firstDayOfYear;
 
     // zero argument constructor
-    public Day() {
-    }
-
-    public void setStuff(int month, int year, int day) {
+    public Day(int month, int year, int day) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -21,6 +18,15 @@ public class Day {
         this.setDayOfYear();
         this.setFirstDayOfYear();
     }
+
+    // public void setDate(int month, int year, int day) {
+    //     this.year = year;
+    //     this.month = month;
+    //     this.day = day;
+    //     this.setDayOfWeek();
+    //     this.setDayOfYear();
+    //     this.setFirstDayOfYear();
+    // }
 
     /* dayOfYear getter/setters */
     public int getDayOfYear() {
@@ -62,8 +68,8 @@ public class Day {
     }
 
     public static void main(String[] args) {
-        Day dayobj = new Day();
-        dayobj.setStuff(3, 2016, 1);
+        Day dayobj = new Day(3, 2016, 1);
+        // dayobj.setDate(3, 2016, 1);
 
         System.out.println(dayobj.jSONFormat());
     }

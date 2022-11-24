@@ -125,8 +125,8 @@ public class CalendarApiController {
       throws JsonMappingException, JsonProcessingException {
 
     // Turn Year Object into JSON
-    Day dayobj = new Day();
-    dayobj.setStuff(month, year, day);
+    Day dayobj = new Day(month, year, day);
+    // dayobj.setStuff(month, year, day);
 
     ObjectMapper mapper = new ObjectMapper();
     JsonNode json = mapper.readTree(dayobj.jSONFormat()); // handling
