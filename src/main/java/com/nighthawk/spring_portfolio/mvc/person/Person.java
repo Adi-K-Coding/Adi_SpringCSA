@@ -93,5 +93,8 @@ public class Person {
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
     }
+    public static void main(String[] args) {
+        //tester method
+    }
 
 }
