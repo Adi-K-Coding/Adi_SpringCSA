@@ -171,7 +171,7 @@ public class Calculator {
                     {
                         // Resolve variable to 0 in order for the rest of the function to successfully run.
                         this.reverse_polish.add("0");
-                        this.expression = "Error with parsing your expression \'" + this.expression + "\'. Please enter valid numbers, operators, or variables and try again.";
+                        this.expression = "Error. Please enter numbers, parentheses, and operators only. ";
                         break;
                     }
                     this.reverse_polish.add(token);
@@ -208,6 +208,7 @@ public class Calculator {
         } else {
             parenthesesCheck = false;
             return false;
+            
         }
     }
 
@@ -223,7 +224,7 @@ public class Calculator {
         for (String token : this.reverse_polish) {
             // If the token is an operator, calculate
             if (isOperator(token)) {
-                if (token.equals("SQRT")) {
+                if (token.equals("SQRT")) {//if square root, only pop one entry because it only requires one number
                     double num1 = calcStack.pop();
                     result = Math.sqrt(num1);
                 } else {
@@ -269,8 +270,8 @@ public class Calculator {
     }
 
     public String jsonify() {
-        String json = "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \""
-                + this.reverse_polish + "\", \"Final Result\": " + this.result + " }";
+        String json = "{ \"Original Expression\": \"" + this.expression + "\",\"Reverse Polish\": \""
+                + this.reverse_polish + "\",  \"Tokens\": \"" + this.tokens + "\", \"Final Result\": " + this.result + " }";
         return json;
     }
 
