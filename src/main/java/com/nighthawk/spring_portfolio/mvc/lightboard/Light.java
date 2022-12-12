@@ -73,6 +73,15 @@ public class Light {
             "}" );
     }
 
+
+
+
+    public void setRGB(short r, short g, short b) {
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+    }
+
     static public void main(String[] args) {
         // create and display LightBoard
         Light light = new Light();

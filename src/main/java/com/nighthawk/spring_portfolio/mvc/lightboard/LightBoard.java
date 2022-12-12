@@ -1,5 +1,7 @@
 package com.nighthawk.spring_portfolio.mvc.lightboard;
 
+import javax.swing.JOptionPane;
+
 import lombok.Data;
 
 @Data  // Annotations to simplify writing code (ie constructors, setters)
@@ -116,12 +118,26 @@ public class LightBoard {
         outString += "\033[m";
 		return outString;
     }
+
+    public void setColor(int row, int col, short r, short g, short b) {
+        String inp1 = JOptionPane.showInputDialog("Red Value(0-255");
+        Short redValue = Short.valueOf(inp1);
+        String inp2 = JOptionPane.showInputDialog("Blue Value(0-255");
+        Short blueValue = Short.valueOf(inp2);
+        String inp3 = JOptionPane.showInputDialog("Green Value(0-255");
+        Short greenValue = Short.valueOf(inp3);
+        lights[row][col].setRGB(redValue, blueValue,greenValue);
+    }
     
+
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(5, 5);
+        LightBoard lightBoard = new LightBoard(7, 4);
         System.out.println(lightBoard);  // use toString() method
         System.out.println(lightBoard.toTerminal());
+        System.out.println(lightBoard.toColorPalette());
+        short r = 255; short g = 255; short b = 255;
+        lightBoard.setColor(0,0,r,g,b);
         System.out.println(lightBoard.toColorPalette());
     }
 }
