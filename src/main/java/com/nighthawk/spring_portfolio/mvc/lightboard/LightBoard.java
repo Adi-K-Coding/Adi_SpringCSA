@@ -120,10 +120,10 @@ public class LightBoard {
     }
 
     public void userColor() {
-        String rowS = JOptionPane.showInputDialog("Row Value");
-        int row = Integer.parseInt(rowS);
-        String colS = JOptionPane.showInputDialog("Col Value");
-        int col = Integer.parseInt(colS);
+        String rowString = JOptionPane.showInputDialog("Row Value");
+        int row = Integer.parseInt(rowString);
+        String colString = JOptionPane.showInputDialog("Col Value");
+        int col = Integer.parseInt(colString);
         String inp1 = JOptionPane.showInputDialog("Red Value(0-255");
         Short redValue = Short.valueOf(inp1);
         String inp2 = JOptionPane.showInputDialog("Blue Value(0-255");
@@ -135,7 +135,7 @@ public class LightBoard {
 
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(7, 10);
+        LightBoard lightBoard = new LightBoard(7, 7);
         System.out.println(lightBoard); // use toString() method
         System.out.println(lightBoard.toTerminal());
         System.out.println(lightBoard.toColorPalette());
