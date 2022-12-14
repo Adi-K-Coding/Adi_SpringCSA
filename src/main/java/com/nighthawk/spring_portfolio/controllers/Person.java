@@ -49,7 +49,7 @@ public class Person {
 
       @Override
       public String toString() {
-         return ": {" + "gpa: " + gpa + " grade: " + grade + "}";
+         return name + ": {" + "gpa: " + gpa + " grade: " + grade + "}";
       }
    }
 
@@ -69,6 +69,11 @@ public class Person {
 
       public String getSubject() {
          return subject;
+      }
+
+      @Override
+      public String toString() {
+         return name + ": {" + "number of classes: " + classes + " subject: " + subject + "}";
       }
    }
 }
