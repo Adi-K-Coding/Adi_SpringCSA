@@ -271,7 +271,7 @@ public class Calculator {
 
     public String jsonify() {
         String json = "{ \"Original Expression\": \"" + this.expression + "\",\"Reverse Polish\": \""
-                + this.reverse_polish + "\",  \"Tokens\": \"" + this.tokens + "\", \"Final Result\": " + this.result + " }";
+                + this.reverse_polish + "\",  \"Tokens\": \"" + this.tokens + "\", \"Result\": " + this.result + " }";
         return json;
     }
 
