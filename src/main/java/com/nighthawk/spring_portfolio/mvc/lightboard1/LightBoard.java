@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.lightboard;
+package com.nighthawk.spring_portfolio.mvc.lightboard1;
 
 import javax.swing.JOptionPane;
 
@@ -73,8 +73,8 @@ public class LightBoard {
     /* Output is intended for Terminal, draws color palette */
     public String toColorPalette() {
         // block sizes
-        final int ROWS = 7;
-        final int COLS = 15;
+        final int ROWS = 5;
+        final int COLS = 10;
 
         // Build large string for entire color palette
         String outString = "";
@@ -119,42 +119,27 @@ public class LightBoard {
         return outString;
     }
 
-    public void lightSetting(int row, int col) {
-        if (lights[row][col].isOn()) {
-            lights[row][col].setOn(false);
-        }
-        else {
-            lights[row][col].setOn(true);
-        }
-        System.out.println("light set " + row + ", " + col + " to " + lights[row][col].isOn());
-    }
-
-    public void allOn() {
-        for (int i = 0; i < lights.length; i++) {
-            for (int j = 0; j < lights[i].length; j++) {
-                lights[i][j].setOn(true);
-            }
-        }
-        System.out.println("set all lights on");
-    }
-
-    public void setColor(int row, int col, short r, short g, short b) {
-        lights[row][col].setRGB(r,g,b);
+    public void userColor() {
+        String rowString = JOptionPane.showInputDialog("Row Value");
+        int row = Integer.parseInt(rowString);
+        String colString = JOptionPane.showInputDialog("Col Value");
+        int col = Integer.parseInt(colString);
+        String inp1 = JOptionPane.showInputDialog("Red Value(0-255");
+        Short redValue = Short.valueOf(inp1);
+        String inp2 = JOptionPane.showInputDialog("Blue Value(0-255");
+        Short blueValue = Short.valueOf(inp2);
+        String inp3 = JOptionPane.showInputDialog("Green Value(0-255");
+        Short greenValue = Short.valueOf(inp3);
+        lights[row][col].setRGB(redValue, blueValue, greenValue);
     }
 
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(5, 5);
+        LightBoard lightBoard = new LightBoard(7, 7);
+        System.out.println(lightBoard); // use toString() method
         System.out.println(lightBoard.toTerminal());
         System.out.println(lightBoard.toColorPalette());
-        lightBoard.allOn();
-        System.out.println(lightBoard.toColorPalette());
-        lightBoard.lightSetting(1, 4);
-        System.out.println(lightBoard.toColorPalette());
-        short r = 255;
-        short g = 255; 
-        short b = 255;
-        lightBoard.setColor(0,0,r,g,b);
+        lightBoard.userColor();
         System.out.println(lightBoard.toColorPalette());
     }
 }

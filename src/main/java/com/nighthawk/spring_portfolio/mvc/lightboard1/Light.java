@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.lightboard;
+package com.nighthawk.spring_portfolio.mvc.lightboard1;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,30 +73,9 @@ public class Light {
             "}" );
     }
 
-    public boolean isOn(){
-        return this.on;
-    }
 
-    public void setOn(boolean on){
-        this.on = on;
-    }
 
-    public short getEffect() {
-        return effect;
-    }
 
-    public short getRed(){
-        return red;
-    }
-
-    public short getGreen(){
-        return green;
-    }
-
-    public short getBlue(){
-        return blue;
-    } 
-    
     public void setRGB(short r, short g, short b) {
         this.red = r;
         this.green = g;
