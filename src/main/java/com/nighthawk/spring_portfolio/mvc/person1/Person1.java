@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.person;
+package com.nighthawk.spring_portfolio.mvc.person1;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -40,7 +40,7 @@ The last annotation connect to database
 @NoArgsConstructor
 @Entity
 @TypeDef(name = "json", typeClass = JsonType.class)
-public class Person {
+public class Person1 {
 
     // automatic unique identifier for Person record
     @Id
@@ -86,7 +86,7 @@ public class Person {
     private Map<String, Map<String, Object>> stats = new HashMap<>();
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, int steps, int goal_steps, int weight) {
+    public Person1(String email, String password, String name, Date dob, int steps, int goal_steps, int weight) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -122,8 +122,8 @@ public class Person {
 
     public static void main(String[] args) {
         // tester method
-        Person person1 = new Person();
-        Person person2 = new Person("AdiKhandelwal@gmail.com", "password", "Adi Khandelwal", new Date(2006 - 06 - 02),
+        Person1 person1 = new Person1();
+        Person1 person2 = new Person1("AdiKhandelwal@gmail.com", "password", "Adi Khandelwal", new Date(2006 - 06 - 02),
                 0, 10000, 160);
 
         System.out.println(person1);

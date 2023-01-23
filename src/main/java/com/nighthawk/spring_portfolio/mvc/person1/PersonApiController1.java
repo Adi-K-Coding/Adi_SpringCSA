@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.person;
+package com.nighthawk.spring_portfolio.mvc.person1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/api/person")
-public class PersonApiController {
+public class PersonApiController1 {
     /*
     #### RESTful API ####
     Resource: https://spring.io/guides/gs/rest-service/
@@ -19,13 +19,13 @@ public class PersonApiController {
 
     // Autowired enables Control to connect POJO Object through JPA
     @Autowired
-    private PersonJpaRepository repository;
+    private PersonJpaRepository1 repository;
 
     /*
     GET List of People
      */
     @GetMapping("/")
-    public ResponseEntity<List<Person>> getPeople() {
+    public ResponseEntity<List<Person1>> getPeople() {
         return new ResponseEntity<>( repository.findAllByOrderByNameAsc(), HttpStatus.OK);
     }
 
@@ -33,10 +33,10 @@ public class PersonApiController {
     GET individual Person using ID
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Person> getPerson(@PathVariable long id) {
-        Optional<Person> optional = repository.findById(id);
+    public ResponseEntity<Person1> getPerson(@PathVariable long id) {
+        Optional<Person1> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Person person = optional.get();  // value from findByID
+            Person1 person = optional.get();  // value from findByID
             return new ResponseEntity<>(person, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
         }
         // Bad ID
@@ -47,10 +47,10 @@ public class PersonApiController {
     DELETE individual Person using ID
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Person> deletePerson(@PathVariable long id) {
-        Optional<Person> optional = repository.findById(id);
+    public ResponseEntity<Person1> deletePerson(@PathVariable long id) {
+        Optional<Person1> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Person person = optional.get();  // value from findByID
+            Person1 person = optional.get();  // value from findByID
             repository.deleteById(id);  // value from findByID
             return new ResponseEntity<>(person, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
         }
@@ -76,7 +76,7 @@ public class PersonApiController {
             return new ResponseEntity<>(dobString +" error; try MM-dd-yyyy", HttpStatus.BAD_REQUEST);
         }
         // A person object WITHOUT ID will create a new record with default roles as student
-        Person person = new Person(email, password, name, dob, steps, goal_steps, weight);
+        Person1 person = new Person1(email, password, name, dob, steps, goal_steps, weight);
         repository.save(person);
         return new ResponseEntity<>(email +" is created successfully", HttpStatus.CREATED);
     }
@@ -90,7 +90,7 @@ public class PersonApiController {
         String term = (String) map.get("term");
 
         // JPA query to filter on term
-        List<Person> list = repository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(term, term);
+        List<Person1> list = repository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(term, term);
 
         // return resulting list and status, error checking should be added
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -98,9 +98,9 @@ public class PersonApiController {
 
     @GetMapping("/getAge/{id}")
     public String getAge(@PathVariable long id) {
-        Optional<Person> optional = repository.findById(id);
+        Optional<Person1> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Person person = optional.get();  // value from findByID
+            Person1 person = optional.get();  // value from findByID
             String ageToString = person.getAgeToString();
             return ageToString;
         }
@@ -110,9 +110,9 @@ public class PersonApiController {
 
     @GetMapping("/getPercent/{id}")
     public String getPercent(@PathVariable long id) {
-        Optional<Person> optional = repository.findById(id);
+        Optional<Person1> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Person person = optional.get();  // value from findByID
+            Person1 person = optional.get();  // value from findByID
             String percentToString = person.getPercentToString();
             return percentToString;
         }
@@ -124,12 +124,12 @@ public class PersonApiController {
     The personStats API adds stats by Date to Person table 
     */
     @PostMapping(value = "/setStats", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Person> personStats(@RequestBody final Map<String,Object> stat_map) {
+    public ResponseEntity<Person1> personStats(@RequestBody final Map<String,Object> stat_map) {
         // find ID
         long id=Long.parseLong((String)stat_map.get("id"));  
-        Optional<Person> optional = repository.findById((id));
+        Optional<Person1> optional = repository.findById((id));
         if (optional.isPresent()) {  // Good ID
-            Person person = optional.get();  // value from findByID
+            Person1 person = optional.get();  // value from findByID
 
             // Extract Attributes from JSON
             Map<String, Object> attributeMap = new HashMap<>();
