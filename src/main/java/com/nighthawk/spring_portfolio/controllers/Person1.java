@@ -1,11 +1,11 @@
 package com.nighthawk.spring_portfolio.controllers;
 
-public class Person {
+public class Person1 {
    private String name;
    private String birthday;
    private int age;
 
-   public Person(String name, String birthday, int age) {
+   public Person1(String name, String birthday, int age) {
       this.name = name;
       this.birthday = birthday;
       this.age = age;
@@ -20,14 +20,14 @@ public class Person {
    }
 
    public static void main(String[] args) {
-      Person Bob = new Person("Bob", "Jan 1,2000", 22);
+      Person1 Bob = new Person1("Bob", "Jan 1,2000", 22);
       Student Ted = Bob.new Student("Ted", "Jan 2, 2010", 12, 11, 4.0, 5);
       Teacher MsSmith = Bob.new Teacher("Ms. Smith", "Jan 5, 1999", 23, 4, "Computer Science");
       System.out.println(Ted);
       System.out.println(MsSmith);
    }
 
-   public class Student extends Person {
+   public class Student extends Person1 {
       private int grade;
       private double gpa;
       private int numFriends;
@@ -53,7 +53,7 @@ public class Person {
       }
    }
 
-   public class Teacher extends Person {
+   public class Teacher extends Person1 {
       private int classes;
       private String subject;
 
